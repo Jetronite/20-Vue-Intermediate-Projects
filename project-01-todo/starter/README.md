@@ -198,7 +198,12 @@ Once the basic list works, try adding:
 ⭐ A remove button per task
 ⭐ A “Clear All” button
 ⭐ A task counter (`You have 3 tasks`)
+⭐ Store tasks in `localStorage`
+⭐ Replace index key with unique ID
+⭐ Add keyboard support (Enter to submit)
 ⭐ A toggle to mark tasks as completed
+⭐ Replace index key with unique ID
+
 
 Each small feature deepens your understanding of:
 
@@ -219,8 +224,3 @@ Before jumping to Project 2, you should be comfortable with:
 * Triggering logic using `@click`
 
 If any of these feel fuzzy, revisit them.
-
-Clarity compounds.
-
-In the next project, you’ll move from simple list rendering to understanding how Vue reacts to state changes over time — which is where the framework truly starts to shine.
-
