@@ -14,6 +14,6 @@ function handleClick() {
 
 <style scoped>
   button {
-    background-color: #e74c3c;
+    background-color: yellow;
   }
 </style>
