@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-import RemoveButton from './components/Remove-button.vue'
-import ClearAllButton from './components/Clear-All-button.vue'
+// Uncomment the lines below if you want to view the RemoveButton and ClearAllButton components
+// import RemoveButton from './components/Remove-button.vue'
+// import ClearAllButton from './components/Clear-All-button.vue'
 
 const tasks = ref([])
 const newTask = ref("")
@@ -12,13 +13,13 @@ function addTask() {
   newTask.value = ""
 }
 
-function removeTask(index) {
-  tasks.value.splice(index, 1)
-}
+// function removeTask(index) {
+//   tasks.value.splice(index, 1)
+// }
 
-function clearTasks() {
-  tasks.value = []
-}
+// function clearTasks() {
+//   tasks.value = []
+// }
 
 </script>
 
@@ -34,9 +35,9 @@ function clearTasks() {
     <ul>
       <li v-for="(task, index) in tasks" :key="index">
         {{ task }}
-        <RemoveButton  @remove="removeTask(index)" />
+        <!-- <RemoveButton  @remove="removeTask(index)" /> -->
       </li>
-      <ClearAllButton v-if="tasks.length" @clear="tasks = []" />
+      <!-- <ClearAllButton v-if="tasks.length" @clear="tasks = []" /> -->
     </ul>
 
   </div>
