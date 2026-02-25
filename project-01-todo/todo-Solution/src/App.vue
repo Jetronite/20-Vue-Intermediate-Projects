@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import RemoveButton from './components/Remove-button.vue'
 
 const tasks = ref([])
 const newTask = ref("")
@@ -9,6 +10,11 @@ function addTask() {
   tasks.value.push(newTask.value.trim())
   newTask.value = ""
 }
+
+function removeTask(index) {
+  tasks.value.splice(index, 1)
+}
+
 </script>
 
 <template>
@@ -23,6 +29,7 @@ function addTask() {
     <ul>
       <li v-for="(task, index) in tasks" :key="index">
         {{ task }}
+        <RemoveButton  @remove="removeTask(index)" />
       </li>
     </ul>
   </div>
@@ -76,10 +83,6 @@ button {
   cursor: pointer;
   font-weight: bold;
   transition: background 0.3s, transform 0.1s;
-}
-
-button:hover {
-  background-color: #3aa876;
 }
 
 button:active {
