@@ -94,19 +94,6 @@ This solution introduces improvements beyond the base requirements:
 
 ---
 
-## What Makes This Different from the Starter
-
-| Starter Template       | Completed Solution           |
-| ---------------------- | ---------------------------- |
-| Contains TODO comments | Fully implemented logic      |
-| No styling             | Modern styled UI             |
-| No input validation    | Trimmed validation           |
-| Minimal structure      | Enhanced layout & animations |
-
-This version demonstrates how a basic functional app can evolve into something production-ready in feel.
-
----
-
 ## How to Run
 
 ```bash
