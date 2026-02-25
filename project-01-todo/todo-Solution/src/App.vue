@@ -36,8 +36,7 @@ function clearTasks() {
         {{ task }}
         <RemoveButton  @remove="removeTask(index)" />
       </li>
-      <!-- <ClearAllButton v-if="tasks.length" @clear="tasks = []" /> -->
-      <ClearAllButton @clear="clearTasks" />
+      <ClearAllButton v-if="tasks.length" @clear="tasks = []" />
     </ul>
 
   </div>
