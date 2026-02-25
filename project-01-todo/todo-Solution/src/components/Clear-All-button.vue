@@ -10,7 +10,7 @@
   <div v-if="showModal" class="modal-overlay">
     <div class="modal">
       <p>Do you want to delete all tasks?</p>
-      <button @click="confirmAdd">Yes</button>
+      <button @click="confirmRemoval">Yes</button>
       <button @click="showModal = false">No</button>
     </div>
   </div>
@@ -26,7 +26,7 @@ function handleClick() {
   showModal.value = true
 }
 
-function confirmAdd() {
+function confirmRemoval() {
   emit('clear')
   showModal.value = false
 }
