@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import RemoveButton from './components/Remove-button.vue'
+import ClearAllButton from './components/Clear-All-button.vue'
 
 const tasks = ref([])
 const newTask = ref("")
@@ -13,6 +14,10 @@ function addTask() {
 
 function removeTask(index) {
   tasks.value.splice(index, 1)
+}
+
+function clearTasks() {
+  tasks.value = []
 }
 
 </script>
@@ -31,7 +36,10 @@ function removeTask(index) {
         {{ task }}
         <RemoveButton  @remove="removeTask(index)" />
       </li>
+      <!-- <ClearAllButton v-if="tasks.length" @clear="tasks = []" /> -->
+      <ClearAllButton @clear="clearTasks" />
     </ul>
+
   </div>
 </template>
 
