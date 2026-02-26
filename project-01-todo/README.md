@@ -35,7 +35,7 @@ Open your browser at `http://localhost:3000` (or the port indicated) to see the 
 
 ## Screenshots / GIFs
 
-*Add screenshots or GIFs here to showcase your Todo List app*
+![Todo List App Preview](src/assets/\list%20Project%201--To-do-list.png)
 
 ## Solution
 
