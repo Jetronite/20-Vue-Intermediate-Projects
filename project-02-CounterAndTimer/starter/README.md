@@ -128,8 +128,21 @@ Mastering them here prepares you for significantly more complex applications.
 
 ---
 
+## Optional Challenge (Recommended)
+If you want, you may add the following features
+
+⭐ A Reset Button (Counter & Timer)
+⭐ Add a Maximum Limit to Counter
+⭐ Disable Buttons Based on State
+⭐ Format the Timer
+⭐ Auto-Stop Timer at X Seconds
+⭐ Persist Counter to Local Storage
+
+---
+
 Build it carefully.
 Test behavior intentionally.
 Think about what happens when components mount and unmount repeatedly.
 
 That’s where real engineering begins.
+Good Luck 😉
