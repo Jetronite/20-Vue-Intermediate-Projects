@@ -1,14 +1,23 @@
 <script setup>
 import { ref } from 'vue'
-// Uncomment the lines below if you want to view the RemoveButton and ClearAllButton components
+// // Uncomment the lines below if you want to view the RemoveButton and ClearAllButton components
 // import RemoveButton from './components/Remove-button.vue'
 // import ClearAllButton from './components/Clear-All-button.vue'
+// import ToggleButton from './components/Toggle-Button.vue'
 
 const tasks = ref([])
 const newTask = ref("")
 
 function addTask() {
   if (!newTask.value.trim()) return
+  // if (tasks.value.includes(newTask.value.trim())) {
+  //   alert("Task already exists!")
+  //   return
+  // }
+  // if (newTask.value.length >= 25) {
+  //   alert("Task limit reached! Please remove some tasks before adding new ones.")
+  //   return
+  // }
   tasks.value.push(newTask.value.trim())
   newTask.value = ""
 }
@@ -28,14 +37,22 @@ function addTask() {
     <h2>To Do List</h2>
 
     <div class="input-group">
-      <input v-model="newTask" type="text" placeholder="Add a new task" />
+      <input 
+      v-model="newTask" 
+      @keyup.enter="addTask" 
+      type="text" 
+      placeholder="Add a new task" 
+      />
       <button @click="addTask">Add</button>
     </div>
 
     <ul>
       <li v-for="(task, index) in tasks" :key="index">
         {{ task }}
-        <!-- <RemoveButton  @remove="removeTask(index)" /> -->
+        <!-- <div class="listButtons"> -->
+          <!-- <ToggleButton :initial="false"/> -->
+          <!-- <RemoveButton @remove="removeTask(index)"/> -->
+        <!-- </div> -->
       </li>
       <!-- <ClearAllButton v-if="tasks.length" @clear="tasks = []" /> -->
     </ul>
@@ -46,7 +63,7 @@ function addTask() {
 <style>
 /* Container styling */
 .app {
-  max-width: 400px;
+  max-width: 600px;
   margin: 50px auto;
   padding: 2rem;
   background: #ffffff;
@@ -82,8 +99,13 @@ input:focus {
   /* Vue Green */
 }
 
+.listButtons {
+  display: flex;
+  gap: 10px;
+}
+
 button {
-  padding: 12px 20px;
+  padding: 6px 12px;
   background-color: #42b983;
   color: white;
   border: none;
