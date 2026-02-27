@@ -1,5 +1,3 @@
----
-
 # 📝 Project 1: Vue Todo List — Completed Solution
 
 **Difficulty:** ★☆☆☆☆ (Beginner)
@@ -26,7 +24,7 @@ This is no longer just a starter template — it is a working implementation.
 
 ---
 
-![Todo List App Preview](starter/src/assets/list%20Project%201--To-do-list.png)
+![Todo List App Preview](src/assets/list%20Project%201--To-do-list.png)
 
 ---
 
@@ -159,7 +157,7 @@ Each addition layers new architectural concepts.
 
 ---
 
-![Additional Improvements](todo-Solution\src\assets\todoApp+extras.png)
+![Additional Improvements](src\assets\todoApp+extras.png)
 
 ---
 

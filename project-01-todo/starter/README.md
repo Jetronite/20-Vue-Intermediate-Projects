@@ -37,7 +37,7 @@ Your job is to wire everything together.
 
 ---
 
-![Todo List App Preview](starter/src/assets/list%20Project%201--To-do-list.png)
+![Todo List App Preview](src/assets/list%20Project%201--To-do-list.png)
 
 ---
 
@@ -217,7 +217,7 @@ Each small feature deepens your understanding of:
 
 ---
 
-![Additional Improvements](todo-Solution\src\assets\todoApp+extras.png)
+![Additional Improvements](src\assets\todoApp+extras.png)
 
 ---
 
