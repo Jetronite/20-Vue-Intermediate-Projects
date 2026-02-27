@@ -58,11 +58,11 @@ By completing this project, you should be able to:
 
 ---
 
-## Stretch Goals
+## Optional Challenge
 
 Once you complete the base requirements, consider these optional challenges:
 
-* Add a **reset** button for the counter and/or timer
+* Add a **reset** button for the counter and timer
 * Format the timer display (e.g., MM:SS)
 * Disable decrement when count is 0
 * Apply dynamic styling based on counter value

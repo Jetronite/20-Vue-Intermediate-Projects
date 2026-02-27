@@ -1,148 +1,108 @@
-# Project 2 – Counter & Timer (Starter Version)
+# Project 2: Counter & Timer – Starter
 
-## 🎯 Purpose of This Starter
-
-This repository provides a **structured scaffold** for the Counter & Timer project.
-
-It does **not** include the completed logic.
-
-Instead, it gives you:
-
-* A prepared component structure
-* Reactive state declarations
-* Empty method stubs
-* Clean layout placeholders
-
-Your task is to implement the logic yourself.
-
-This approach isolates the core learning goals:
-
-* Understanding Vue reactivity
-* Writing state-modifying methods
-* Deriving values with computed properties
-* Managing side effects safely with lifecycle hooks
-
-The goal is conceptual clarity — not copying code.
+**Difficulty:** ★☆☆☆☆ (Beginner)
+**Core Concepts:** Computed properties, methods, lifecycle hooks (`mounted`)
+**Features:** Increment/decrement counter, start/stop a timer
+**Focus:** Understanding reactive updates and side effects
 
 ---
 
-## 🧠 Why Use a Starter?
+## Setup Instructions
 
-When learning, it helps to control difficulty.
+1. Ensure you have Node.js installed.
+2. Create a new Vue project (if not already done):
 
-This starter removes setup friction so you can focus entirely on:
+```bash
+npm create vue@latest
+```
 
-* How reactive values update the DOM
-* How computed properties track dependencies
-* How timers (side effects) must be cleaned up
+3. Install dependencies:
 
-In real-world development, you rarely start from zero.
-You usually work inside an existing structure.
+```bash
+npm install
+```
 
-This starter mirrors that reality.
+4. Start the development server:
 
----
+```bash
+npm run dev
+```
 
-## 📦 What’s Included
-
-Inside `CounterTimer.vue` you will find:
-
-* Basic template layout (headings and empty UI placeholders)
-* `<script setup>` structure
-* Imported Vue APIs:
-
-  * `ref`
-  * `computed`
-  * `onUnmounted`
-* Reactive state variables (e.g., `count`, `time`)
-* Empty method stubs:
-
-  * `increment()`
-  * `decrement()`
-  * `startTimer()`
-  * `stopTimer()`
+5. Open the project in your browser at the URL provided by the dev server.
 
 ---
 
-## 🚫 What Is NOT Included
+## Project Structure
 
-The following logic is intentionally **not implemented**:
+Your starter project contains the following scaffolded files:
 
-* Counter increment/decrement behavior
-* Protection against negative values
-* Computed status message logic
-* Interval-based timer logic
-* Lifecycle cleanup implementation
+```
+src/
+ ├── components/
+ │     ├── Counter.vue       # Component to implement the counter logic
+ │     └── Timer.vue         # Component to implement the timer logic
+ ├── App.vue                 # Main application file, imports Counter and Timer
+ └── main.js                 # Vue entry point
+```
 
-You must implement these yourself.
-
----
-
-## 🛠 Your Tasks
-
-### Counter
-
-* Implement increment logic
-* Implement decrement logic
-* (Optional) Prevent negative values
-* Create a computed status based on count
-
-### Timer
-
-* Implement start logic using `setInterval`
-* Prevent multiple intervals from stacking
-* Implement stop logic
-* Ensure cleanup using `onUnmounted`
+Implement counter logic inside Counter.vue.
+Implement timer logic inside Timer.vue.
 
 ---
 
-## ✅ How to Validate Your Work
+## Your Task
 
-Before moving forward, ensure:
+1. **Counter Feature**
 
-* The counter updates instantly without manual DOM manipulation
-* The computed status changes automatically
-* Only one timer interval runs at a time
-* The timer stops properly when the component unmounts
-* No memory leaks occur
+   * Display a number starting at 0
+   * Increment and decrement buttons
+   * Optional: prevent the counter from going below 0
+   * Display a derived status message based on the count
 
-If everything works without directly touching the DOM, you are successfully working within Vue’s reactivity system.
+2. **Timer Feature**
 
----
+   * Display elapsed time in seconds
+   * Start and Stop buttons
+   * Ensure timer updates the UI reactively
+   * Prevent multiple timers from running at once
+   * Clean up the timer when the component is unmounted
 
-## 🧩 Skill Focus
-
-This starter trains two critical frontend skills:
-
-1. State → UI synchronization
-2. Managing side effects safely
-
-These patterns appear everywhere:
-
-* API polling
-* Animations
-* Form validation
-* Live dashboards
-
-Mastering them here prepares you for significantly more complex applications.
+You must implement these features using Vue’s reactivity system. Avoid direct DOM manipulation.
 
 ---
 
-## Optional Challenge (Recommended)
-If you want, you may add the following features
+## Constraints
 
-⭐ A Reset Button (Counter & Timer)
-⭐ Add a Maximum Limit to Counter
-⭐ Disable Buttons Based on State
-⭐ Format the Timer
-⭐ Auto-Stop Timer at X Seconds
-⭐ Persist Counter to Local Storage
+* Use `ref` for reactive state
+* Use **methods** to modify state
+* Use **computed properties** for derived values
+* Manage side effects responsibly with lifecycle hooks (`mounted`/`onUnmounted`)
+* Do not hardcode values into the template or manipulate the DOM manually
+
+---
+
+## Hints (High-Level Only)
+
+* Consider creating one reactive variable for the counter and one for the timer.
+* Use a computed property to derive the counter’s status message.
+* For the timer, `setInterval` will help, but think about how to stop it safely.
+* Lifecycle hooks are useful for cleaning up intervals to prevent memory leaks.
+
+---
+
+## Common Pitfalls
+
+* Accidentally starting multiple intervals for the timer
+* Directly changing the DOM instead of updating reactive state
+* Forgetting to clear intervals when stopping the timer or unmounting the component
+* Overwriting computed properties or reactive variables incorrectly
+* Updating state outside methods or outside Vue’s reactive system
 
 ---
 
 Build it carefully.
 Test behavior intentionally.
-Think about what happens when components mount and unmount repeatedly.
-
 That’s where real engineering begins.
 Good Luck 😉
+
+----
