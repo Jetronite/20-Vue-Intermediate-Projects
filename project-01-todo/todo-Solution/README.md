@@ -157,7 +157,7 @@ Each addition layers new architectural concepts.
 
 ---
 
-![Additional Improvements](src\assets\todoApp+extras.png)
+![Additional Improvements](src/assets/todoApp+extras.png)
 
 ---
 

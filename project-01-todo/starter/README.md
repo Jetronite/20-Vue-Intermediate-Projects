@@ -217,7 +217,7 @@ Each small feature deepens your understanding of:
 
 ---
 
-![Additional Improvements](src\assets\todoApp+extras.png)
+![Additional Improvements](src/assets/todoApp+extras.png)
 
 ---
 
