@@ -37,21 +37,19 @@ function addTask() {
     <h2>To Do List</h2>
 
     <div class="input-group">
-      <input 
-      v-model="newTask" 
-      @keyup.enter="addTask" 
-      type="text" 
-      placeholder="Add a new task" 
-      />
+      <input v-model="newTask" @keyup.enter="addTask" type="text" placeholder="Add a new task" />
       <button @click="addTask">Add</button>
     </div>
+
+    <!-- <h3 v-if="tasks.length === 1">You have: {{ tasks.length }} task</h3>
+    <h3 v-if="tasks.length > 1">You have: {{ tasks.length }} tasks</h3> -->
 
     <ul>
       <li v-for="(task, index) in tasks" :key="index">
         {{ task }}
         <!-- <div class="listButtons"> -->
-          <!-- <ToggleButton :initial="false"/> -->
-          <!-- <RemoveButton @remove="removeTask(index)"/> -->
+        <!-- <ToggleButton :initial="false"/> -->
+        <!-- <RemoveButton @remove="removeTask(index)"/> -->
         <!-- </div> -->
       </li>
       <!-- <ClearAllButton v-if="tasks.length" @clear="tasks = []" /> -->
