@@ -1,5 +1,3 @@
----
-
 # Project 1: Todo List App
 
 **Difficulty:** ★☆☆☆☆ (Beginner)
