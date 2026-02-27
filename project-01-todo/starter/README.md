@@ -1,198 +1,103 @@
-# Project 1: Todo List App
+# Project 1: Todo List App – Starter
 
 **Difficulty:** ★☆☆☆☆ (Beginner)
+**Focus:** Solidifying reactive state and basic template syntax
 
 ---
 
-## Overview
+## Setup Instructions
 
-In this project, you’ll build a simple Todo List using Vue’s Composition API (`<script setup>`).
+1. Navigate into the starter folder:
 
-The goal isn’t just to make a list work — it’s to understand **how Vue reactivity connects your data to the DOM**.
+```bash
+cd project-1-todo/starter
+```
 
-When your state changes, the UI updates automatically. That’s the core idea you’re practicing here.
+2. Install dependencies:
 
-You’ve been given a structured starter template with TODO comments. Your task is to complete the logic step by step.
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open your browser at the local URL shown in your terminal.
+
+You should see the basic layout of the Todo app waiting for logic.
 
 ---
 
-## Your Mission
+## Project Structure
 
-You need to implement:
+Your starter contains the essential Vue structure:
+
+```
+src/
+ ├── assets/
+ │     └── images used for reference
+ ├── App.vue
+ ├── main.js
+```
+
+The template includes:
+
+* An input field already bound with `v-model`
+* A button already wired with `@click="addTask"`
+* An unordered list (`<ul>`) ready for dynamic rendering
+
+Your responsibility is to implement the logic inside `<script setup>`.
+
+---
+
+## Your Task
+
+You must implement:
 
 1. A reactive array to store tasks
 2. A reactive variable for the input field
 3. A function that adds a task to the array
 4. Rendering the tasks using `v-for`
 
-The template already contains:
+When the user types into the input and clicks the button:
 
-* An input bound with `v-model`
-* A button that triggers `addTask`
-* A `<ul>` waiting for dynamic content
+* The new task should appear in the list
+* The input should clear
+* The UI should update automatically
 
-Your job is to wire everything together.
-
----
-
-![Todo List App Preview](src/assets/list%20Project%201--To-do-list.png)
+The template is already structured. Your job is to connect state, logic, and rendering.
 
 ---
 
-## Concepts You’ll Practice
+## Constraints
 
-### 1. `ref()` — Creating Reactive State
+* Use the Composition API with `<script setup>`
+* Use `ref()` for reactive variables
+* Do not manipulate the DOM directly
+* Do not reload the page to update state
+* Use `v-for` for rendering lists
+* Always include a `:key` when using `v-for`
 
-Vue doesn’t magically track normal variables.
-To make a value reactive, you use `ref()`.
-
-Example concept:
-
-```js
-const count = ref(0)
-```
-
-When `count.value` changes, Vue updates the DOM automatically.
-
-You’ll use this idea for:
-
-* The tasks array
-* The input field value
+The goal is to practice reactivity, not shortcuts.
 
 ---
 
-### 2. `v-model` — Two-Way Data Binding
+## Hints (High-Level Only)
 
-`v-model` connects your input field to a reactive variable.
+* Vue tracks changes only on reactive values created with `ref()`.
+* Inside `<script>`, access ref values using `.value`.
+* Inside the `<template>`, Vue unwraps refs automatically.
+* To add to a reactive array, push into `tasks.value`.
+* If nothing renders, log your state and verify it changes after clicking the button.
 
-When a user types:
-
-* The variable updates.
-  When the variable updates:
-* The UI reflects it.
-
-That’s two-way binding.
-
-Your input is already written as:
-
-```html
-v-model="newTask"
-```
-
-You just need to make sure `newTask` actually exists and is reactive.
+Reactivity is not magic — it is structured state tracking.
 
 ---
 
-### 3. Handling Events with `@click`
-
-The button calls:
-
-```html
-@click="addTask"
-```
-
-Your job is to define the `addTask` function so it:
-
-* Takes the current input value
-* Adds it to your tasks array
-* Clears the input afterward
-
----
-
-## Implementation Strategy (Think Before Coding)
-
-Before touching the keyboard, answer this mentally:
-
-* What data do I need?
-* How will tasks be stored?
-* What should happen when the button is clicked?
-
-Programming rewards structured thinking.
-
-Don’t rush into typing.
-
-Design first.
-
----
-
-# Part 2: Rendering, Debugging, and Stretching
-
-Now that you’ve created:
-
-* A reactive `tasks` array
-* A reactive `newTask` variable
-* An `addTask()` function
-
-It’s time to make the list appear on the screen.
-
----
-
-## Rendering Tasks with `v-for`
-
-Vue renders lists using the `v-for` directive.
-
-Conceptually:
-
-```html
-<li v-for="item in items" :key="something">
-  {{ item }}
-</li>
-```
-
-You’ll use this pattern to loop over `tasks`.
-
-Inside your `<ul>`, render one `<li>` per task.
-
-Important rule:
-Always provide a `:key`.
-
-The `key` helps Vue track elements efficiently.
-You can use the array index for now (we’ll improve this in later projects).
-
----
-
-## What Should Happen When You Click “Add”?
-
-When the user clicks:
-
-1. The current `newTask` value should be pushed into `tasks`.
-2. The input field should reset to empty.
-3. The UI should update automatically.
-
-If it doesn’t update:
-
-* Your variable might not be reactive.
-* You might be forgetting `.value` in `<script setup>` when using refs.
-
-Remember:
-Inside `<script>`, refs use `.value`.
-Inside `<template>`, Vue unwraps them automatically.
-
-That subtle distinction matters.
-
----
-
-## Common Beginner Mistakes
-
-Here are a few things that trip people up:
-
-1. Forgetting to initialize the array as reactive.
-2. Trying to push to `tasks` without using `.value`.
-3. Forgetting to clear `newTask` after adding.
-4. Not binding `v-model` to a defined variable.
-
-If your list doesn’t render, log things:
-
-```js
-console.log(tasks.value)
-```
-
-Debugging is not failure.
-Debugging is understanding reality.
-
----
-
-## Optional Challenge (Recommended)
+## Optional Challenges (Recommended)
 
 Once the basic list works, try adding:
 
@@ -201,11 +106,8 @@ Once the basic list works, try adding:
 ⭐ A “Clear All” button
 ⭐ A task counter (`You have 3 tasks`)
 ⭐ Store tasks in `localStorage`
-⭐ Replace index key with unique ID
 ⭐ Add keyboard support (Enter to submit)
 ⭐ A toggle to mark tasks as completed
-⭐ Replace index key with unique ID
-
 
 Each small feature deepens your understanding of:
 
@@ -215,18 +117,36 @@ Each small feature deepens your understanding of:
 
 ---
 
-![Additional Improvements](src/assets/todoApp+extras.png)
+## Common Pitfalls
+
+* Forgetting to initialize the array as reactive
+* Trying to push to `tasks` without using `.value`
+* Not clearing the input after adding a task
+* Forgetting to define the variable bound to `v-model`
+* Omitting the `:key` in `v-for`
+
+If your list doesn’t update:
+
+* Log your reactive variables
+* Check whether you’re correctly using `.value`
+* Confirm that state is actually changing
+
+Debugging is not failure. It is observation in action.
 
 ---
 
-## What You Should Understand Before Moving On
+## A Little Advice Before You Code
 
-Before jumping to Project 2, you should be comfortable with:
+Pause before typing.
 
-* Creating reactive state using `ref()`
-* Updating arrays in reactive state
-* Rendering dynamic lists with `v-for`
-* Connecting inputs using `v-model`
-* Triggering logic using `@click`
+Ask yourself:
 
-If any of these feel fuzzy, revisit them.
+* What data do I need?
+* How should it be structured?
+* What should happen when the button is clicked?
+
+Programming rewards intention more than speed.
+
+Finish this project only when you truly understand why the UI updates automatically. That understanding is more valuable than the feature itself.
+
+Build carefully. Test deliberately. Move forward with clarity.

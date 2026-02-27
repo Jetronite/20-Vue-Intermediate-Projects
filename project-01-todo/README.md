@@ -1,54 +1,122 @@
 # Project 1: Todo List App
 
-**Difficulty:** ★☆☆☆☆ (Beginner)
+## Difficulty
 
-## Description
+★☆☆☆☆ (Beginner)
 
-The Todo List app is a beginner-friendly project designed to help you get hands-on experience with Vue.js. It teaches the fundamentals of reactive data, template syntax, and event handling. Users can easily add tasks, remove them, and mark them as completed, giving you a clear view of how Vue updates the DOM in real-time.
-
-This project is perfect for understanding how Vue’s core features work together to create dynamic, interactive applications. By completing it, you’ll build a strong foundation for more complex projects in the Vue roadmap.
-
-## Core Concepts Covered
+## Concept Focus
 
 * `v-model` for two-way data binding
 * `v-for` for rendering lists dynamically
 * `v-if` for conditional rendering
 * Event handling with `@click`
-* Reactive state updates and DOM rendering
+* Reactive state and automatic DOM updates
 
-## Features
+---
 
-* Add new tasks with a simple input form
-* Remove existing tasks individually
-* Mark tasks as completed with visual feedback
-* Optional: Clear all completed tasks at once
-
-## Installation
-
-```bash
-cd project-1-todo/starter
-npm install
-npm run dev
-```
-
-Open your browser at `http://localhost:3000` (or the port indicated) to see the app in action.
-
-## Screenshots / GIFs
+## Screenshot
 
 ![Todo List App Preview](starter/src/assets/list%20Project%201--To-do-list.png)
 
-![Additional Improvements](todo-Solution/src/assets/todoApp+extras.png)
+---
 
+## Overview
 
-## Solution
+The Todo List App is your first structured exercise in building a reactive Vue interface.
 
-The completed solution is in the `solution/` folder. Compare it with your work to see alternative approaches and best practices.
+This project is intentionally simple in logic but powerful in teaching. You will build a system where user input updates state, state updates the DOM, and the interface reacts immediately — without manually touching the DOM.
 
-## Tips
+This is your first encounter with Vue’s declarative model: you describe *what* the UI should look like based on state, and Vue handles *how* it changes.
 
-* Experiment with different ways to mark tasks as completed, like toggling a class or adding icons.
-* Try adding a feature to edit tasks after creating them.
-* Focus on understanding how changes in reactive data automatically update the UI.
-* Keep the styling simple so you can focus on functionality first.
+Mastering this mental model is foundational. Every advanced Vue concept builds on it.
 
-This project is a stepping stone for your Vue journey, helping you gain confidence before moving on to more interactive and complex apps.
+---
+
+## Learning Objectives
+
+By completing this project, you should be able to:
+
+* Bind input values using `v-model`
+* Render lists using `v-for`
+* Conditionally render elements using `v-if`
+* Respond to user events using `@click`
+* Update reactive state and observe automatic DOM updates
+* Think in terms of state → view synchronization
+
+If you can explain *why* the DOM updates when state changes without manually manipulating it, you’ve crossed an important threshold.
+
+---
+
+## Feature Requirements
+
+Your application must support:
+
+* Adding new tasks via an input field
+* Displaying all tasks in a list
+* Removing individual tasks
+* Marking tasks as completed with visible visual feedback
+* Keeping the UI reactive at all times
+
+Functional correctness is more important than visual complexity.
+
+---
+
+## Evaluation Checklist
+
+Before moving on, confirm:
+
+* Adding a task updates the list immediately
+* Removing a task updates state and DOM correctly
+* Completed tasks visually differ from incomplete ones
+* No direct DOM manipulation is used
+* No page reload is required for updates
+* State drives the UI — not the other way around
+
+If something only works after refresh, re-examine your reactive state.
+
+---
+
+## Reflection Questions
+
+After finishing:
+
+* What part of the app is responsible for storing tasks?
+* How does Vue know when to update the DOM?
+* What would happen if tasks were not reactive?
+* Why is `v-model` more convenient than manually syncing input values?
+* Where could this architecture break down in larger applications?
+
+The point is not just building it. It’s understanding why it works.
+
+---
+
+## Learning Flow
+
+1. Navigate to the `starter/` folder
+2. Implement the required features yourself
+3. Test all behaviors intentionally
+4. Only after completing your attempt, review the `solution/` folder
+5. Compare architectural decisions, not just syntax
+
+Treat the solution as a reference implementation — not a shortcut.
+
+---
+
+## Estimated Time
+
+45–90 minutes depending on experience.
+
+If it takes longer, that’s not failure — that’s friction forging understanding.
+
+---
+
+## Prerequisites
+
+* Basic understanding of Vue project structure
+* Familiarity with reactive state using `ref()`
+* Comfort using template directives like `v-if` and `v-for`
+* Basic JavaScript array manipulation
+
+If those feel uncertain, revisit fundamentals before proceeding.
+
+---
