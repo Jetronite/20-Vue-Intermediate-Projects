@@ -37,6 +37,9 @@ Open your browser at `http://localhost:3000` (or the port indicated) to see the 
 
 ![Todo List App Preview](starter/src/assets/list%20Project%201--To-do-list.png)
 
+![Additional Improvements](todo-Solution\src\assets\todoApp+extras.png)
+
+
 ## Solution
 
 The completed solution is in the `solution/` folder. Compare it with your work to see alternative approaches and best practices.

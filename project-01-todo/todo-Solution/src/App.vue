@@ -14,7 +14,7 @@ function addTask() {
   //   alert("Task already exists!")
   //   return
   // }
-  // if (newTask.value.length >= 25) {
+  // if (newTask.value.length >= 50) {
   //   alert("Task limit reached! Please remove some tasks before adding new ones.")
   //   return
   // }
@@ -47,10 +47,10 @@ function addTask() {
     <ul>
       <li v-for="(task, index) in tasks" :key="index">
         {{ task }}
-        <!-- <div class="listButtons"> -->
-        <!-- <ToggleButton :initial="false"/> -->
-        <!-- <RemoveButton @remove="removeTask(index)"/> -->
-        <!-- </div> -->
+        <!-- <div class="listButtons">
+          <ToggleButton :initial="false" />
+          <RemoveButton @remove="removeTask(index)" />
+        </div> -->
       </li>
       <!-- <ClearAllButton v-if="tasks.length" @clear="tasks = []" /> -->
     </ul>

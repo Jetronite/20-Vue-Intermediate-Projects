@@ -37,6 +37,10 @@ Your job is to wire everything together.
 
 ---
 
+![Todo List App Preview](starter/src/assets/list%20Project%201--To-do-list.png)
+
+---
+
 ## Concepts You’ll Practice
 
 ### 1. `ref()` — Creating Reactive State
@@ -210,6 +214,10 @@ Each small feature deepens your understanding of:
 * Event handling
 * Array manipulation
 * Conditional rendering
+
+---
+
+![Additional Improvements](todo-Solution\src\assets\todoApp+extras.png)
 
 ---
 

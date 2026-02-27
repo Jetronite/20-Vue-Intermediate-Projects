@@ -26,6 +26,10 @@ This is no longer just a starter template — it is a working implementation.
 
 ---
 
+![Todo List App Preview](starter/src/assets/list%20Project%201--To-do-list.png)
+
+---
+
 ## Core Concepts Demonstrated
 
 ### 1. Reactive State with `ref()`
@@ -152,6 +156,10 @@ Small project. Big principles.
 * Replace index key with unique ID
 
 Each addition layers new architectural concepts.
+
+---
+
+![Additional Improvements](todo-Solution\src\assets\todoApp+extras.png)
 
 ---
 
