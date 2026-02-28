@@ -64,10 +64,14 @@ Once you complete the base requirements, consider these optional challenges:
 
 * Add a **reset** button for the counter and timer
 * Format the timer display (e.g., MM:SS)
+* Display a "Running" or "Stopped" label for the timer using a reactive boolean.
 * Disable decrement when count is 0
 * Apply dynamic styling based on counter value
-* Extract counter and timer logic into reusable components
-* Combine counter and timer state into shared reactive logic
+* Display a "Running" or "Stopped" label for the timer using a reactive boolean.
+* Add configurable step sizes for counter increment/decrement.
+* Convert to TypeScript for stronger type guarantees.
+* Add unit tests using Vue Test Utils.
+
 
 Stretch goals help you explore beyond the core concepts and experiment with best practices.
 
