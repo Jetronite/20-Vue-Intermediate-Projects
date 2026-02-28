@@ -17,15 +17,27 @@ let timerInterval = null
 // Methods
 function startTimer() {
   // TODO: start timer interval
+  if (!timerInterval) {
+    timerInterval = setInterval(() => {
+      time.value++
+    }, 1000)
+  }
 }
 
 function stopTimer() {
   // TODO: stop timer interval
+  if (timerInterval) {
+    clearInterval(timerInterval)
+    timerInterval = null
+  }
 }
 
 // Clean up interval on unmount
 onUnmounted(() => {
   // TODO: clear timerInterval
+  if (timerInterval) {
+    clearInterval(timerInterval)
+  }
 })
 </script>
 

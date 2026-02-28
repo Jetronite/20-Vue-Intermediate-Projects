@@ -17,16 +17,28 @@ const count = ref(0)
 // Computed property placeholder
 const status = computed(() => {
   // TODO: derive a status message from count
-  return "Idle"
+  if (count.value === 0) {
+    return "Idle"
+  } else if (count.value > 0 && count.value < 10) {
+    return "Low"
+  } else if (count.value >= 10 && count.value < 20) {
+    return "Medium"
+  } else {
+    return "High"
+  }
 })
 
 // Methods
 function increment() {
   // TODO: increment count
+  count.value++
 }
 
 function decrement() {
   // TODO: decrement count (optional: prevent below 0)
+  if (count.value > 0) {
+    count.value--
+  }
 }
 </script>
 
