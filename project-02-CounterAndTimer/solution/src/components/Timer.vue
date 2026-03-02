@@ -16,12 +16,13 @@ import { ref, onUnmounted, computed } from 'vue'
 const time = ref<number>(0)
 let timerInterval: ReturnType<typeof setInterval> | null = null
 
-const isRunning = computed<boolean>(() => timerInterval !== null)
+const isRunning = ref<boolean>(false)
 
 // Methods
 function startTimer(): void {
   // TODO: start timer interval
   if (!timerInterval) {
+    isRunning.value = true
     timerInterval = setInterval(() => {
       time.value++
     }, 1000)
@@ -33,6 +34,7 @@ function pauseTimer(): void {
   if (timerInterval) {
     clearInterval(timerInterval)
     timerInterval = null
+    isRunning.value = false
   }
 }
 
@@ -46,40 +48,35 @@ function resetTimer(): void {
 }
 
 const formattedTime = computed<string>(() => {
-  const seconds = time.value
-  if (seconds < 60) {
-    return `${seconds} seconds`
-  } else if (seconds < 3600) {
-    const minutes = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${minutes} minutes ${secs} seconds`
-  } else if (seconds < 86400) {
-    const hours = Math.floor(seconds / 3600)
-    const minutes = Math.floor((seconds % 3600) / 60)
-    const secs = seconds % 60
-    return `${hours} hours ${minutes} minutes ${secs} seconds`
-  } else if (seconds < 31536000) {
-    const days = Math.floor(seconds / 86400)
-    const hours = Math.floor((seconds % 86400) / 3600)
-    const minutes = Math.floor((seconds % 3600) / 60)
-    const secs = seconds % 60
-    return `${days} days ${hours} hours ${minutes} minutes ${secs} seconds`
-  } else {
-    const years = Math.floor(seconds / 31536000)
-    const days = Math.floor((seconds % 31536000) / 86400)
-    const hours = Math.floor((seconds % 86400) / 3600)
-    const minutes = Math.floor((seconds % 3600) / 60)
-    const secs = seconds % 60
-    return `${years} years ${days} days ${hours} hours ${minutes} minutes ${secs} seconds`
+  let seconds = time.value;
+
+  // Define our units in descending order
+  const units = [
+    { label: 'year',   seconds: 31536000 },
+    { label: 'day',    seconds: 86400 },
+    { label: 'hour',   seconds: 3600 },
+    { label: 'minute', seconds: 60 },
+    { label: 'second', seconds: 1 }
+  ];
+
+  const parts: string[] = [];
+
+  for (const unit of units) {
+    if (seconds >= unit.seconds || (unit.label === 'second' && parts.length === 0)) {
+      const value = Math.floor(seconds / unit.seconds);
+      seconds %= unit.seconds;
+      // Add "s" for plural if value is not 1
+      parts.push(`${value} ${unit.label}${value !== 1 ? 's' : ''}`);
+    }
   }
-})
+
+  return parts.join(' ');
+});
 
 // Clean up interval on unmount
 onUnmounted((): void => {
   // TODO: clear timerInterval
-  if (timerInterval) {
-    clearInterval(timerInterval)
-  }
+  pauseTimer()
 })
 </script>
 
