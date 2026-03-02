@@ -1,11 +1,19 @@
 <template>
   <div class="timer">
     <h3>Timer</h3>
-    <p>Time: {{ formattedTime }}</p>
-<button v-if="!isRunning && time === 0" @click="startTimer">Start</button>
-<button v-if="isRunning" @click="pauseTimer">Pause</button>
-<button v-if="!isRunning && time > 0" @click="resumeTimer">Resume</button>
-<button v-if="time > 0" @click="resetTimer">Reset</button>
+    
+    <p :class="{ 'active': isRunning, 'paused': !isRunning && time > 0 }">
+      Status: {{ isRunning ? 'Running' : (time > 0 ? 'Paused' : 'Idle') }}
+    </p>
+
+    <p class="time-display">Time: {{ formattedTime }}</p>
+
+    <div class="controls">
+      <button v-if="!isRunning && time === 0" @click="startTimer">Start</button>
+      <button v-if="isRunning" @click="pauseTimer">Pause</button>
+      <button v-if="!isRunning && time > 0" @click="resumeTimer">Resume</button>
+      <button v-if="time > 0" @click="resetTimer">Reset</button>
+    </div>
   </div>
 </template>
 
@@ -86,6 +94,23 @@ onUnmounted((): void => {
   padding: 1rem;
   border-radius: 8px;
   text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+/* Dynamic Status Styles */
+.active {
+  color: #42b983; /* Green */
+  font-weight: bold;
+}
+
+.paused {
+  color: #e67e22; /* Orange/Yellow */
+  font-weight: bold;
+}
+
+.time-display {
+  font-family: monospace;
+  font-size: 1.2rem;
 }
 
 button {
@@ -96,5 +121,10 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.8;
 }
 </style>
