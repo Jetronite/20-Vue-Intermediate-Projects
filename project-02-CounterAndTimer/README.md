@@ -9,7 +9,7 @@
 
 ## Screenshot
 
-*(Insert a screenshot or GIF of the counter and timer UI here to give learners a visual reference)*
+![Counter and Timer app preview](.//Counter-and-timer-preview.png)
 
 ---
 
