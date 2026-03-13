@@ -9,7 +9,7 @@
 
 ## Screenshot
 
-![Counter and Timer app preview](.//Counter-and-timer-preview.png)
+![Counter and Timer app preview](.//Counter-and-timer-app.png)
 
 ---
 
