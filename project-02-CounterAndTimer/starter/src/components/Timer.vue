@@ -1,32 +1,39 @@
 <template>
   <div class="timer">
     <h3>Timer</h3>
-    <p>Time: {{ time }} seconds</p>
-    <button @click="startTimer">Start</button>
-    <button @click="stopTimer">Stop</button>
+    <p :class="{ 'active': isRunning }">{{ isRunning ? 'Running' : 'Paused' }}</p>
+    <p class="time-display">{{ formattedTime }}</p>
+    
+    <div class="controls">
+      <button @click="toggleTimer">{{ isRunning ? 'Pause' : 'Start' }}</button>
+      <button :disabled="time === 0" @click="resetTimer">Reset</button>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onUnmounted } from 'vue'
+import { ref, onUnmounted, computed } from 'vue'
 
-// Reactive state
 const time = ref(0)
-let timerInterval = null
+const isRunning = ref(false)
+let interval = null
 
-// Methods
-function startTimer() {
-  // TODO: start timer interval
-}
-
-function stopTimer() {
-  // TODO: stop timer interval
-}
-
-// Clean up interval on unmount
-onUnmounted(() => {
-  // TODO: clear timerInterval
+const formattedTime = computed(() => {
+  // Simple HH:MM:SS formatter
+  return null
 })
+
+function toggleTimer() {
+  // Logic to toggle timer between pause and start functionaliy
+}
+
+function resetTimer() {
+  // Logic to reset the timer
+}
+
+onUnmounted(
+  // Logic to unmount the interval
+)
 </script>
 
 <style scoped>
@@ -35,6 +42,23 @@ onUnmounted(() => {
   padding: 1rem;
   border-radius: 8px;
   text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+/* Dynamic Status Styles */
+.active {
+  color: #42b983; /* Green */
+  font-weight: bold;
+}
+
+.paused {
+  color: #e67e22; /* Orange/Yellow */
+  font-weight: bold;
+}
+
+.time-display {
+  font-family: monospace;
+  font-size: 1.2rem;
 }
 
 button {
@@ -45,5 +69,10 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.8;
 }
 </style>

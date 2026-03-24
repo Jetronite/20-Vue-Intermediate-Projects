@@ -1,91 +1,47 @@
 <template>
   <div class="timer">
     <h3>Timer</h3>
+    <p :class="{ 'active': isRunning }">{{ isRunning ? 'Running' : 'Paused' }}</p>
+    <p class="time-display">{{ formattedTime }}</p>
     
-    <p :class="{ 'active': isRunning, 'paused': !isRunning && time > 0 }">
-      Status: {{ isRunning ? 'Running' : (time > 0 ? 'Paused' : 'Idle') }}
-    </p>
-
-    <p class="time-display">Time: {{ formattedTime }}</p>
-
     <div class="controls">
-      <button v-if="!isRunning && time === 0" @click="startTimer">Start</button>
-      <button v-if="isRunning" @click="pauseTimer">Pause</button>
-      <button v-if="!isRunning && time > 0" @click="resumeTimer">Resume</button>
-      <button v-if="time > 0" @click="resetTimer">Reset</button>
+      <button @click="toggleTimer">{{ isRunning ? 'Pause' : 'Start' }}</button>
+      <button :disabled="time === 0" @click="resetTimer">Reset</button>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, onUnmounted, computed } from 'vue'
 
-// Reactive state
-const time = ref<number>(0)
-let timerInterval: ReturnType<typeof setInterval> | null = null
+const time = ref(0)
+const isRunning = ref(false)
+let interval = null
 
-const isRunning = ref<boolean>(false)
-
-// Methods
-function startTimer(): void {
-  // TODO: start timer interval
-  if (!timerInterval) {
-    isRunning.value = true
-    timerInterval = setInterval(() => {
-      time.value++
-    }, 1000)
-  }
-}
-
-function pauseTimer(): void {
-  // TODO: pause timer interval
-  if (timerInterval) {
-    clearInterval(timerInterval)
-    timerInterval = null
-    isRunning.value = false
-  }
-}
-
-function resumeTimer(): void {
-  startTimer()
-}
-
-function resetTimer(): void {
-  time.value = 0
-  pauseTimer()
-}
-
-const formattedTime = computed<string>(() => {
-  let seconds = time.value;
-
-  // Define our units in descending order
-  const units = [
-    { label: 'year',   seconds: 31536000 },
-    { label: 'day',    seconds: 86400 },
-    { label: 'hour',   seconds: 3600 },
-    { label: 'minute', seconds: 60 },
-    { label: 'second', seconds: 1 }
-  ];
-
-  const parts: string[] = [];
-
-  for (const unit of units) {
-    if (seconds >= unit.seconds || (unit.label === 'second' && parts.length === 0)) {
-      const value = Math.floor(seconds / unit.seconds);
-      seconds %= unit.seconds;
-      // Add "s" for plural if value is not 1
-      parts.push(`${value} ${unit.label}${value !== 1 ? 's' : ''}`);
-    }
-  }
-
-  return parts.join(' ');
-});
-
-// Clean up interval on unmount
-onUnmounted((): void => {
-  // TODO: clear timerInterval
-  pauseTimer()
+// Simple HH:MM:SS formatter
+const formattedTime = computed(() => {
+  const h = Math.floor(time.value / 3600).toString().padStart(2, '0')
+  const m = Math.floor((time.value % 3600) / 60).toString().padStart(2, '0')
+  const s = (time.value % 60).toString().padStart(2, '0')
+  return `${h}:${m}:${s}`
 })
+
+const toggleTimer = () => {
+  if (isRunning.value) {
+    clearInterval(interval)
+  } else {
+    interval = setInterval(() => time.value++, 1000)
+  }
+  isRunning.value = !isRunning.value
+}
+
+const resetTimer = () => {
+  clearInterval(interval)
+  isRunning.value = false
+  time.value = 0
+}
+
+onUnmounted(() => clearInterval(interval))
 </script>
 
 <style scoped>
