@@ -53,6 +53,14 @@ onUnmounted(() => clearInterval(interval))
   transition: border-color 0.3s ease;
 }
 
+h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
 /* Dynamic Status Styles */
 .active {
   color: #42b983; /* Green */
