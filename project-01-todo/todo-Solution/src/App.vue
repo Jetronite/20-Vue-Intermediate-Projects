@@ -80,6 +80,10 @@ button {
   transition: background 0.3s, transform 0.1s;
 }
 
+button:hover {
+  background-color: #3aa876;
+}
+
 button:active {
   transform: scale(0.98);
 }
