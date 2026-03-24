@@ -25,7 +25,7 @@ This solution reflects a clean, minimal, but production-aware implementation.
 
 ## Screenshot
 
-![Todo List App Preview](starter/src/assets/list%20Project%201--To-do-list.png)
+![Todo List App Preview](src/assets/list%20Project%201--To-do-list.png)
 
 ---
 
