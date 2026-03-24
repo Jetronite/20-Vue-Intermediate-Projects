@@ -1,164 +1,120 @@
 <template>
-  <div class="counter" :class="status.toLowerCase()">
+  <div class="counter">
     <h3>Counter</h3>
-
-    <div class="display-section">
-      <p class="status-label">Status: <span>{{ status }}</span></p>
-    </div>
-
-    <div class="button-grid">
-      <button v-if="buttonSwitchFour === 3" class="btn-3" @click="biggerStepDecrement">-{{ secondStep }}</button>
-      <button v-if="buttonSwitchFour === 1 || buttonSwitchFour === 3" class="btn-1" @click="stepDecrement">-{{ firstStep }}</button>
-      <button @click="decrement">−</button>
-      <p class="count-value">{{ count }}</p>
-      <button @click="increment">＋</button>
-      <button v-if="buttonSwitchFour === 1 || buttonSwitchFour === 2" class="btn-2" @click="stepIncrement">+{{ firstStep }}</button>
-      <button v-if="buttonSwitchFour === 2" class="btn-3" @click="biggerStepIncrement">+{{ secondStep }}</button>
-    </div>
-    <button class="reset-btn" @click="reset">Reset</button>
+    <p>Count: {{ count }}</p>
+    <p>Status: {{ status }}</p>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
   </div>
 </template>
 
-
-<script setup lang="ts">
+<script setup>
 import { ref, computed } from 'vue'
 
-const count = ref<number>(0)
-const firstStep = ref<number>(5)
-const secondStep = ref<number>(10)
+// Reactive state
+const count = ref(0)
 
-/** * buttonSwitchFour handles UI state:
- * 0: Reset/Initial, 1: Single Step, 2: Multi-Increment, 3: Multi-Decrement 
- */
-const buttonSwitchFour = ref<number>(1)
-
-const status = computed<string>(() => {
-  if (count.value === 0) return "Idle"
-  if (count.value < 10) return "Low"
-  if (count.value < 20) return "Medium"
-  return "High"
+// Computed property placeholder
+const status = computed(() => {
+  // TODO: derive a status message from count
+  if (count.value === 0) {
+    return "Idle"
+  } else if (count.value <= 33) {
+    return "LOW"
+  } else if (count.value <= 66) {
+    return "LOW"
+  } else if (count.value <= 99) {
+    return "LOW"
+  } else {
+    return "Counting Down"
+  }
 })
 
-function increment (): void {
-  buttonSwitchFour.value = 1;
-  count.value++;
+// Methods
+function increment() {
+  // TODO: increment count
+  count.value++
 }
 
-function decrement (): void {
+function decrement() {
+  // TODO: decrement count (optional: prevent below 0)
   if (count.value > 0) {
-    buttonSwitchFour.value = 1;
     count.value--
   }
 }
-
-function stepIncrement (): void {
-  buttonSwitchFour.value = 2;
-  count.value += firstStep.value
-}
-
-function stepDecrement (): void {
-  if (count.value-firstStep.value >= 0) {
-    buttonSwitchFour.value = 3;
-    count.value -= firstStep.value
-  }
-}
-
-function biggerStepIncrement (): void {
-  count.value += secondStep.value
-}
-
-function biggerStepDecrement (): void {
-  if (count.value-secondStep.value >= 0) {
-    count.value -= secondStep.value
-  }
-}
-
-function reset (): void {
-  count.value = 0
-  buttonSwitchFour.value = 0;
-}
-
 </script>
 
 <style scoped>
 .counter {
-  border: 2px solid;
-  padding: 1.5rem;
-  border-radius: 12px;
+  /* Layout & Container */
+  padding: 2rem;
+  border: 2px solid #42b983;
+  border-radius: 16px;
   text-align: center;
-  transition: all 0.3s ease;
-  margin: 1rem auto;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
 }
 
-/* Dynamic Border Colors based on Status */
-.counter.idle {
-  border-color: #bdc3c7;
-}
-
-.counter.low {
-  border-color: #3498db;
-}
-
-.counter.medium {
-  border-color: #f1c40f;
-}
-
-.counter.high {
-  border-color: #e74c3c;
-}
-
-.count-value {
-  font-size: 3rem;
-  font-weight: bold;
-  margin: 0;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.status-label span {
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-/* Grid Layout for buttons */
-.button-grid {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  margin: 1.5rem 0;
-}
-
-button {
-  padding: 8px 16px;
-  border-radius: 6px;
-  background-color: #ecf0f1;
+h3 {
+  margin-top: 0;
   color: #2c3e50;
-  border: 1px solid #bdc3c7;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-button:hover:not(:disabled) {
-  background-color: #dfe6e9;
-}
-
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.button-grid button {
-  padding: 12px 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-size: 1.2rem;
+}
+
+/* Typography for Count and Status */
+p:nth-of-type(1) {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #42b983;
+}
+
+p:nth-of-type(2) {
+  font-style: italic;
+  color: #7f8c8d;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+button {
+  width: 45px;
+  height: 45px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 8px;
+  border-radius: 50%; /* Circular buttons */
   background-color: #42b983;
   color: white;
   border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.reset-btn {
-  width: 100%;
+button:hover {
+  background-color: #33a06f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific styling for the minus button to differentiate */
+button:last-of-type {
   background-color: #e74c3c;
-  color: white;
-  border: none;
-  font-weight: bold;
+}
+
+button:last-of-type:hover {
+  background-color: #c0392b;
 }
 </style>
