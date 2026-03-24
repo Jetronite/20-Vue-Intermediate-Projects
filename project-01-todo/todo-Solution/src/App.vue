@@ -1,34 +1,14 @@
 <script setup>
 import { ref } from 'vue'
-// // Uncomment the lines below if you want to view the RemoveButton and ClearAllButton components
-// import RemoveButton from './components/Remove-button.vue'
-// import ClearAllButton from './components/Clear-All-button.vue'
-// import ToggleButton from './components/Toggle-Button.vue'
 
 const tasks = ref([])
 const newTask = ref("")
 
 function addTask() {
   if (!newTask.value.trim()) return
-  // if (tasks.value.includes(newTask.value.trim())) {
-  //   alert("Task already exists!")
-  //   return
-  // }
-  // if (newTask.value.length >= 50) {
-  //   alert("Task limit reached! Please remove some tasks before adding new ones.")
-  //   return
-  // }
   tasks.value.push(newTask.value.trim())
   newTask.value = ""
 }
-
-// function removeTask(index) {
-//   tasks.value.splice(index, 1)
-// }
-
-// function clearTasks() {
-//   tasks.value = []
-// }
 
 </script>
 
@@ -36,23 +16,15 @@ function addTask() {
   <div class="app">
     <h2>To Do List</h2>
 
-    <div class="input-group">
+    <form class="input-group" @submit.prevent="addTask">
       <input v-model="newTask" @keyup.enter="addTask" type="text" placeholder="Add a new task" />
-      <button @click="addTask">Add</button>
-    </div>
-
-    <!-- <h3 v-if="tasks.length === 1">You have: {{ tasks.length }} task</h3>
-    <h3 v-if="tasks.length > 1">You have: {{ tasks.length }} tasks</h3> -->
+      <button type="submit">Add</button>
+    </form>
 
     <ul>
       <li v-for="(task, index) in tasks" :key="index">
         {{ task }}
-        <!-- <div class="listButtons">
-          <ToggleButton :initial="false" />
-          <RemoveButton @remove="removeTask(index)" />
-        </div> -->
       </li>
-      <!-- <ClearAllButton v-if="tasks.length" @clear="tasks = []" /> -->
     </ul>
 
   </div>
@@ -95,11 +67,6 @@ input {
 input:focus {
   border-color: #42b983;
   /* Vue Green */
-}
-
-.listButtons {
-  display: flex;
-  gap: 10px;
 }
 
 button {
