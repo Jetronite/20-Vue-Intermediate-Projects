@@ -8,7 +8,7 @@ This repository is a curated collection of **20 Vue projects**, designed to help
 
 **Created by Captain Jet** – a passionate web developer and mentor. This repo reflects extensive research and hands-on experience in Vue, bringing together projects from beginner to advanced levels that are otherwise hard to find for free.
 
-Connect with me: [GitHub](https://github.com/your-username) | [Portfolio](https://your-portfolio-link.com)
+Connect with me: [GitHub](https://github.com/Jetronite) | [Portfolio](I am working on this 😎)
 
 If you use this repository, please give credit by keeping this section intact. Star and share if it helped you!
 
@@ -70,6 +70,7 @@ Use the `solution` folder if you want to see a fully completed version or compar
 
 ## Tips & Notes
 
+* The entire project is built using vue's composition api, but you are free to migrate as long as you understand
 * No pressure to complete everything at once—go at your own pace.
 * Each project’s README gives guidance and suggestions, screenshots, or GIFs to help you understand what to build.
 * Live demos can be linked if available, but focus on learning concepts first.
