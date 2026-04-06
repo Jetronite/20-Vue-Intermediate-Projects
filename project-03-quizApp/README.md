@@ -1,4 +1,4 @@
-# Simple Quiz App
+# Project 3: Simple Quiz App
 
 **Difficulty:** ★★☆☆☆ (Beginner → Intermediate)
 **Concept Focus:** Conditional rendering, event handling, component communication, basic app state management
@@ -46,13 +46,6 @@ Your implementation must include:
 * Score tracking.
 * A final results screen showing total score.
 * An option to restart the quiz.
-
-Optional enhancements (stretch goals):
-
-* Timer per question.
-* Question progress indicator (e.g., 2 of 5).
-* Shuffle questions.
-* Store high score locally.
 
 ---
 

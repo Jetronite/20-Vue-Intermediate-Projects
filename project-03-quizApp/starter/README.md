@@ -1,4 +1,4 @@
-# 🧠 Project 3: Simple Quiz App
+# Project 3: Simple Quiz App
 
 **Difficulty:** ★★☆☆☆ (Beginner → Intermediate)
 **Concept Focus:** Conditional rendering, event handling, passing props, basic state management
@@ -104,22 +104,6 @@ Parent passes new data down →
 UI updates.
 
 The magic of reactive frameworks happens when **state drives the interface**.
-
----
-
-## 🚀 Optional Challenges
-
-If the basic quiz works, experiment further.
-
-Try adding:
-
-* A **progress indicator** (Question 2 of 5)
-* A **restart quiz button**
-* Highlighting the **correct answer after selection**
-* Simple **animations between questions**
-* A **timer for each question**
-
-Small features like these sharpen your understanding of state transitions.
 
 ---
 

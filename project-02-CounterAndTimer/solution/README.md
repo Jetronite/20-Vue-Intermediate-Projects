@@ -136,6 +136,237 @@ This also scales well. If additional features are introduced (e.g., reset button
 
 ---
 
+## Reflection Questions (answered)
+
+### **1. How does reactive state trigger UI updates?**
+
+In Vue, when you use `ref()` or `reactive()`, Vue wraps your data in its reactivity system.
+
+So when you do something like:
+
+```js
+count.value++
+```
+
+Vue:
+
+1. Detects the change
+2. Re-runs any dependent template code
+3. Efficiently updates only the affected DOM
+
+You don’t manually update the UI—Vue does it for you.
+
+👉 Think:
+**State changes → Vue reacts → UI updates automatically**
+
+---
+
+### **2. What is the difference between modifying state and deriving state?**
+
+#### **Modifying state**
+
+You are *changing the actual data*:
+
+```js
+count.value++
+```
+
+---
+
+#### **Deriving state**
+
+You are *calculating something from existing data*:
+
+```js
+const status = computed(() => {
+  return count.value > 5 ? "High" : "Low"
+})
+```
+
+---
+
+#### Key difference:
+
+| Type         | Purpose           | Example            |
+| ------------ | ----------------- | ------------------ |
+| Modify state | Store real data   | `count++`          |
+| Derive state | Compute from data | `"High"` / `"Low"` |
+
+👉 Derived state should **never be manually updated**
+It updates automatically when the source changes.
+
+---
+
+### **3. Why must intervals be cleaned up?**
+
+Because `setInterval` keeps running **even if your component is gone**.
+
+If you don’t clean it:
+
+* Memory leaks happen
+* Background processes keep running
+* Bugs appear (like multiple timers ticking at once)
+
+---
+
+### Proper cleanup:
+
+```js
+onUnmounted(() => {
+  clearInterval(timer)
+})
+```
+
+👉 Rule:
+**If you start something (interval, listener), you must stop it.**
+
+---
+
+### **4. What would happen if multiple timers ran simultaneously?**
+
+Chaos. Fast.
+
+You’d see:
+
+* Time increasing too quickly
+* Multiple intervals stacking
+* Performance issues
+* Hard-to-debug behavior
+
+Example:
+Instead of:
+
+```
+1 → 2 → 3 → 4
+```
+
+You get:
+
+```
+1 → 3 → 6 → 10 (accelerating madness)
+```
+
+👉 That’s why you guard it:
+
+```js
+if (!isRunning.value) {
+  startTimer()
+}
+```
+
+---
+
+### **5. How could you refactor this project to support multiple counters?**
+
+Now you’re stepping into scalable thinking.
+
+#### Option 1: Component reuse
+
+Create a reusable component:
+
+```vue
+<Counter />
+<Counter />
+<Counter />
+```
+
+Each instance has its own internal state.
+
+---
+
+### Option 2: Data-driven approach
+
+Store counters in an array:
+
+```js
+const counters = ref([0, 0, 0])
+```
+
+Render with `v-for`:
+
+```html
+<div v-for="(count, index) in counters">
+  {{ count }}
+</div>
+```
+
+---
+
+### Option 3 (advanced):
+
+Turn logic into a **composable**:
+
+```js
+function useCounter() {
+  const count = ref(0)
+  const increment = () => count.value++
+  return { count, increment }
+}
+```
+
+Now you can reuse logic anywhere.
+
+---
+
+### **6. Where should side-effect logic reside in a component?**
+
+Side effects = things that affect the outside world:
+
+* Timers (`setInterval`)
+* API calls
+* Event listeners
+
+---
+
+#### Correct place:
+
+Inside **lifecycle hooks**, like:
+
+```js
+onMounted()
+onUnmounted()
+```
+
+---
+
+#### Example:
+
+```js
+onMounted(() => {
+  timer = setInterval(() => {
+    time.value++
+  }, 1000)
+})
+
+onUnmounted(() => {
+  clearInterval(timer)
+})
+```
+
+---
+
+#### Why?
+
+Because lifecycle hooks:
+
+* Control **when** effects start
+* Ensure **proper cleanup**
+* Keep logic predictable
+
+---
+
+### **Final Insight**
+
+This project is teaching you 3 deep ideas:
+
+* Reactivity (Vue handles updates)
+* Separation (state vs derived state)
+* Responsibility (who starts/stops side effects)
+
+Once these click, you stop “trying things” and start **engineering behavior**.
+
+---
+
 ## Possible Improvements
 
 1. Add a Reset button for both counter and timer.
